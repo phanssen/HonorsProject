@@ -15,6 +15,7 @@
 		CC3F2B2B21E567FF00B5315B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC3F2B2921E567FF00B5315B /* LaunchScreen.storyboard */; };
 		CC3F2B3621E567FF00B5315B /* Honors_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3F2B3521E567FF00B5315B /* Honors_ProjectTests.swift */; };
 		CC3F2B4121E567FF00B5315B /* Honors_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3F2B4021E567FF00B5315B /* Honors_ProjectUITests.swift */; };
+		CCF0F86F21E65BA0003C8F6A /* ARView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCF0F86E21E65BA0003C8F6A /* ARView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		CC3F2B3C21E567FF00B5315B /* Honors ProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Honors ProjectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC3F2B4021E567FF00B5315B /* Honors_ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Honors_ProjectUITests.swift; sourceTree = "<group>"; };
 		CC3F2B4221E567FF00B5315B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCF0F86E21E65BA0003C8F6A /* ARView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		CC3F2B1D21E567FD00B5315B /* Honors Project */ = {
 			isa = PBXGroup;
 			children = (
+				CCF0F86D21E65B5B003C8F6A /* views */,
 				CC3F2B1E21E567FD00B5315B /* AppDelegate.swift */,
 				CC3F2B2021E567FD00B5315B /* art.scnassets */,
 				CC3F2B2221E567FD00B5315B /* ViewController.swift */,
@@ -126,6 +129,14 @@
 				CC3F2B4221E567FF00B5315B /* Info.plist */,
 			);
 			path = "Honors ProjectUITests";
+			sourceTree = "<group>";
+		};
+		CCF0F86D21E65B5B003C8F6A /* views */ = {
+			isa = PBXGroup;
+			children = (
+				CCF0F86E21E65BA0003C8F6A /* ARView.xib */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +247,7 @@
 				CC3F2B2B21E567FF00B5315B /* LaunchScreen.storyboard in Resources */,
 				CC3F2B2821E567FF00B5315B /* Assets.xcassets in Resources */,
 				CC3F2B2621E567FD00B5315B /* Main.storyboard in Resources */,
+				CCF0F86F21E65BA0003C8F6A /* ARView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
