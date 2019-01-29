@@ -85,9 +85,31 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let sphere = SCNNode(geometry: sphereShape)
         sphere.position = position
 
-
-//        var shipNode = SCNNode(mdlObject: "art.scnassets/ship.scn")
+        // var shipNode = SCNNode(mdlObject: "art.scnassets/ship.scn")
         sceneView.scene.rootNode.addChildNode(sphere)
+    }
+
+    // remove single object from the view
+    @IBAction func removeObject(node: SCNNode) {
+        node.removeFromParentNode()
+    }
+
+    // clear all objects from the scene; connected to Clear View from menu
+    @IBAction func clearView() {
+        // prompt user to confirm they want to clear view
+        let alertPrompt = UIAlertController(title: "Clear View", message: "Are you sure you want to remove all objects from current view?", preferredStyle: .alert)
+
+        // add yes and no options
+        alertPrompt.addAction(UIAlertAction(title: "No", style: .cancel, handler: { _ in
+            return
+        }))
+        alertPrompt.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Default Action"), style: .default, handler: { _ in
+                let newScene = SCNScene(named: "art.scnassets/newscene.scn")!
+                self.sceneView.scene = newScene
+        }))
+
+        // display prompt
+        self.present(alertPrompt, animated: true, completion: nil)
     }
 
     // MARK: - ARSCNViewDelegate

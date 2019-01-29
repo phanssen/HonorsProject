@@ -67,6 +67,9 @@
                                         <state key="normal" title="Clear View">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="clearView" destination="BV1-FR-VrT" eventType="touchUpInside" id="upz-xy-Q8D"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
