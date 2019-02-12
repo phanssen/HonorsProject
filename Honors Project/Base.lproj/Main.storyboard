@@ -76,20 +76,48 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NbW-X2-jIA">
+                                <rect key="frame" x="314" y="762" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="YAz-n9-tST"/>
+                                    <constraint firstAttribute="height" constant="50" id="nwW-Wk-Edh"/>
+                                </constraints>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="handleRemoveNodeButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="YXv-BY-KkV"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEE-AX-vB1">
+                                <rect key="frame" x="50" y="762" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="MMn-RQ-bpk"/>
+                                    <constraint firstAttribute="height" constant="50" id="zLI-nW-bHq"/>
+                                </constraints>
+                                <state key="normal" title="Close" image="close_icon"/>
+                                <connections>
+                                    <action selector="handleCloseDetailsButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="gBu-Oq-lnN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="NbW-X2-jIA" secondAttribute="trailing" constant="50" id="7aW-ha-Xxq"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="NbW-X2-jIA" secondAttribute="bottom" constant="50" id="7lN-SY-EkQ"/>
                             <constraint firstItem="vk1-u3-Bgo" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" constant="10" id="BeR-pU-S0e"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" id="GsS-dJ-CKf"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="gEE-AX-vB1" secondAttribute="bottom" constant="50" id="QIr-eg-D2H"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="bottom" secondItem="fQZ-KI-GVf" secondAttribute="bottom" id="VpT-BR-CcM"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="trailing" secondItem="fQZ-KI-GVf" secondAttribute="trailing" id="XyZ-9z-H8e"/>
                             <constraint firstItem="vk1-u3-Bgo" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" id="Zin-Mv-Au7"/>
+                            <constraint firstItem="gEE-AX-vB1" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" constant="50" id="j9a-4K-Zey"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="top" id="rJc-2c-zQA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
                     </view>
                     <connections>
+                        <outlet property="closeDetailsButton" destination="gEE-AX-vB1" id="usQ-5v-alh"/>
                         <outlet property="menuButton" destination="Wdg-lC-qIg" id="ljg-3i-oV9"/>
+                        <outlet property="removeNodeButton" destination="NbW-X2-jIA" id="p0F-rw-dcb"/>
                         <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
                         <outletCollection property="menuOptions" destination="SBN-yy-26D" collectionClass="NSMutableArray" id="J3P-Kt-oYN"/>
                         <outletCollection property="menuOptions" destination="zh1-Zd-HZJ" collectionClass="NSMutableArray" id="vGs-OK-uCH"/>
@@ -108,27 +136,27 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="nQD-eM-bEf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZHx-9r-Zrc">
-                            <size key="itemSize" width="130" height="130"/>
+                            <size key="itemSize" width="150" height="160"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FurnitureCell" id="Ssd-OJ-ZHM" customClass="FurnitureCellController" customModule="Honors_Project" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
+                                <rect key="frame" x="10" y="10" width="150" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="160"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="close_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="w8E-Uu-OFE">
-                                            <rect key="frame" x="0.0" y="0.0" width="130" height="110"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="130"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjB-7t-RIC">
-                                            <rect key="frame" x="0.0" y="109" width="130" height="21"/>
+                                            <rect key="frame" x="0.0" y="130" width="150" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -183,6 +211,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="close_icon" width="480" height="480"/>
         <image name="close_icon.png" width="480" height="480"/>
         <image name="menu_icon.png" width="480" height="480"/>
     </resources>

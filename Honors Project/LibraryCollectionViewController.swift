@@ -12,18 +12,11 @@ private let reuseIdentifier = "FurnitureCell"
 
 class LibraryCollectionViewController: UICollectionViewController {
 
-//    @IBOutlet weak var furnitureCell: FurnitureCellController!
+    let furniture = ["Plant"]
+    let furnitureImages: [UIImage] = [UIImage(named: "plant")!]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
     }
 
     /*
@@ -38,23 +31,33 @@ class LibraryCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
+    // return the number of sections
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return furniture.count
     }
 
-
+    // return the number of items in the collection view
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return furniture.count
     }
+
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FurnitureCell", for: indexPath) as! FurnitureCellController // have to cast to cell controller type, otherwise it doesn't recognize that there is a furniture label
+
+        cell.furnitureLabel.text = furniture[indexPath.item]
+        cell.furnitureImageView.image = furnitureImages[indexPath.item]
     
         return cell
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+
+        cell?.layer.borderColor = UIColor.gray.cgColor
+        cell?.layer.borderWidth = 2
+        
+        // show options for placing cell or deleting cell here
     }
 
     @IBAction func onCloseLibrary(_ sender: Any) {
