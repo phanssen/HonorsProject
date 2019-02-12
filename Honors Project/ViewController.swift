@@ -14,10 +14,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var menuImage : UIImage = UIImage(named: "art.scnassets/menu_icon.png")!
     var nodeModel: SCNNode!
     let nodeName = "cherub"
+    var selectedNode: SCNNode!
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet var menuOptions: [UIButton]!
+    @IBOutlet weak var closeDetailsButton: UIButton!
+    @IBOutlet weak var removeNodeButton: UIButton!
+
 
     @IBAction func menuAction(_ sender: UIButton) {
         menuControl()
@@ -66,6 +70,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     // track screen touches on ARView and either add or remove object accordingly
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // prevent anything else from happening if the details are open...may need to change this when selecting things from library
+        if selectedNode != nil { return }
+
         // get location of the touch
         let location = touches.first!.location(in: sceneView)
 
@@ -78,19 +85,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // an object has been touched and gets removed(?) -> turn this into "showDetails"
         if let hit = hitResults.first {
             if let node = getParent(hit.node) {
-                // prompt user to confirm they want to clear object
-                let alertPrompt = UIAlertController(title: "Remove Object", message: "Are you sure you want to remove this object?", preferredStyle: .alert)
+                // set selectedNode to node
+                selectedNode = node
 
-                // add yes and no options
-                alertPrompt.addAction(UIAlertAction(title: "No", style: .cancel, handler: { _ in
-                    return
-                }))
-                alertPrompt.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Default Action"), style: .default, handler: { _ in
-                        node.removeFromParentNode()
-                    }))
-
-                // display prompt
-                self.present(alertPrompt, animated: true, completion: nil)
+                // showNodeDetails
+                showNodeDetails()
 
                 return
             }
@@ -116,18 +115,43 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         return nil
     }
 
+    func showNodeDetails() {
+        // make remove button visible
+        removeNodeButton.isHidden = !removeNodeButton.isHidden
+
+        // make X button visible to close out of show details
+        closeDetailsButton.isHidden = !closeDetailsButton.isHidden
+    }
+
+    @IBAction func handleCloseDetailsButton(_ sender: Any) {
+        showNodeDetails()
+        selectedNode = nil
+    }
+
+    @IBAction func handleRemoveNodeButton(_ sender: Any) {
+        // prompt user to confirm they want to clear object
+        let alertPrompt = UIAlertController(title: "Remove Object", message: "Are you sure you want to remove this object?", preferredStyle: .alert)
+
+        // add yes and no options
+        alertPrompt.addAction(UIAlertAction(title: "No", style: .cancel, handler: { _ in
+            return
+        }))
+        alertPrompt.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Default Action"), style: .default, handler: { _ in
+            self.selectedNode.removeFromParentNode()
+            self.handleCloseDetailsButton(sender)
+        }))
+
+        // display prompt
+        self.present(alertPrompt, animated: true, completion: nil)
+    }
+
     @IBAction func handleLibraryButton(_ sender: Any) {
         performSegue(withIdentifier: "toLibrary", sender: self)
     }
 
-    // remove single object from the view
-    @IBAction func removeObject(node: SCNNode) {
-        node.removeFromParentNode()
-    }
-
     // clear all objects from the scene; connected to Clear View from menu
     @IBAction func clearView() {
-        menuControl()
+        if selectedNode != nil { return }
 
         // prompt user to confirm they want to clear view
         let alertPrompt = UIAlertController(title: "Clear View", message: "Are you sure you want to remove all objects from current view?", preferredStyle: .alert)
@@ -137,9 +161,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             return
         }))
         alertPrompt.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Default Action"), style: .default, handler: { _ in
-            self.sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
-                node.removeFromParentNode()
-            }
+                self.sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in node.removeFromParentNode()}
         }))
 
         // display prompt
