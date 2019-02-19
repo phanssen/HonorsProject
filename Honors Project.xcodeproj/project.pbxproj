@@ -14,7 +14,8 @@
 		CC3F2B2B21E567FF00B5315B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC3F2B2921E567FF00B5315B /* LaunchScreen.storyboard */; };
 		CC3F2B3621E567FF00B5315B /* Honors_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3F2B3521E567FF00B5315B /* Honors_ProjectTests.swift */; };
 		CC3F2B4121E567FF00B5315B /* Honors_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3F2B4021E567FF00B5315B /* Honors_ProjectUITests.swift */; };
-		CC7BF56D2212CC04000745E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC7BF56C2212CC03000745E8 /* Assets.xcassets */; };
+		CC706B5F221B49FB004D8C72 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC706B5E221B49FB004D8C72 /* Images.xcassets */; };
+		CC7C122B221B485B00E5FF1B /* SceneKit_Assets.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = CC7C122A221B485B00E5FF1B /* SceneKit_Assets.scnassets */; };
 		CCC6D99922027F730010DD1E /* FurnitureCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC6D99822027F730010DD1E /* FurnitureCellController.swift */; };
 		CCC6D9A1220287B00010DD1E /* LibraryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC6D9A0220287B00010DD1E /* LibraryCollectionViewController.swift */; };
 		CCF0F86F21E65BA0003C8F6A /* ARView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCF0F86E21E65BA0003C8F6A /* ARView.xib */; };
@@ -51,7 +52,8 @@
 		CC3F2B3C21E567FF00B5315B /* Honors ProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Honors ProjectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC3F2B4021E567FF00B5315B /* Honors_ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Honors_ProjectUITests.swift; sourceTree = "<group>"; };
 		CC3F2B4221E567FF00B5315B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CC7BF56C2212CC03000745E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CC706B5E221B49FB004D8C72 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CC7C122A221B485B00E5FF1B /* SceneKit_Assets.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; name = SceneKit_Assets.scnassets; path = "Honors Project/SceneKit_Assets.scnassets"; sourceTree = "<group>"; };
 		CCC6D99822027F730010DD1E /* FurnitureCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FurnitureCellController.swift; sourceTree = "<group>"; };
 		CCC6D9A0220287B00010DD1E /* LibraryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCollectionViewController.swift; sourceTree = "<group>"; };
 		CCF0F86E21E65BA0003C8F6A /* ARView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARView.xib; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 		CC3F2B1221E567FD00B5315B = {
 			isa = PBXGroup;
 			children = (
+				CC7C122A221B485B00E5FF1B /* SceneKit_Assets.scnassets */,
 				CC3F2B1D21E567FD00B5315B /* Honors Project */,
 				CC3F2B3421E567FF00B5315B /* Honors ProjectTests */,
 				CC3F2B3F21E567FF00B5315B /* Honors ProjectUITests */,
@@ -111,10 +114,10 @@
 				CC3F2B2221E567FD00B5315B /* ViewController.swift */,
 				CC3F2B2421E567FD00B5315B /* Main.storyboard */,
 				CCC6D9A0220287B00010DD1E /* LibraryCollectionViewController.swift */,
-				CC7BF56C2212CC03000745E8 /* Assets.xcassets */,
 				CC3F2B2921E567FF00B5315B /* LaunchScreen.storyboard */,
 				CC3F2B2C21E567FF00B5315B /* Info.plist */,
 				CCC6D99822027F730010DD1E /* FurnitureCellController.swift */,
+				CC706B5E221B49FB004D8C72 /* Images.xcassets */,
 			);
 			path = "Honors Project";
 			sourceTree = "<group>";
@@ -252,8 +255,9 @@
 				CC3F2B2121E567FD00B5315B /* art.scnassets in Resources */,
 				CC3F2B2B21E567FF00B5315B /* LaunchScreen.storyboard in Resources */,
 				CC3F2B2621E567FD00B5315B /* Main.storyboard in Resources */,
+				CC706B5F221B49FB004D8C72 /* Images.xcassets in Resources */,
 				CCF0F86F21E65BA0003C8F6A /* ARView.xib in Resources */,
-				CC7BF56D2212CC04000745E8 /* Assets.xcassets in Resources */,
+				CC7C122B221B485B00E5FF1B /* SceneKit_Assets.scnassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

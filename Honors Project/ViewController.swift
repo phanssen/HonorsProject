@@ -13,8 +13,9 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
     var menuImage : UIImage = UIImage(named: "art.scnassets/menu_icon.png")!
     var nodeModel: SCNNode!
-    let nodeName = "cherub"
+    var nodeName: String = ""
     var selectedNode: SCNNode!
+    var selectedScn: SCNScene! = nil
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var menuButton: UIButton!
@@ -42,12 +43,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
         // Set the scene to the view
         sceneView.scene = scene
-
-        let modelScene = SCNScene(named:
-            "art.scnassets/cherub/cherub.dae")!
-
-        nodeModel =  modelScene.rootNode.childNode(
-            withName: nodeName, recursively: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,8 +65,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     // track screen touches on ARView and either add or remove object accordingly
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // prevent anything else from happening if the details are open...may need to change this when selecting things from library
-        if selectedNode != nil { return }
+        // prevent anything else from happening if the details are open
+        if(selectedNode != nil) { return }
 
         // get location of the touch
         let location = touches.first!.location(in: sceneView)
@@ -82,8 +77,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let hitResults: [SCNHitTestResult]  =
             sceneView.hitTest(location, options: hitTestOptions)
 
-        // an object has been touched and gets removed(?) -> turn this into "showDetails"
+        // an object has been touched, show details
         if let hit = hitResults.first {
+            // set nodeName to hit node name
+            nodeName = hit.node.name!
             if let node = getParent(hit.node) {
                 // set selectedNode to node
                 selectedNode = node
@@ -94,6 +91,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 return
             }
         }
+
+        // no object has been touch, trying to add object to scene
+
+        // check if a scene is selected
+        if(selectedScn == nil) { return }
 
         // find a feature point and add an ARAnchor
         let hitResultsFeaturePoints: [ARHitTestResult] =
@@ -126,6 +128,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBAction func handleCloseDetailsButton(_ sender: Any) {
         showNodeDetails()
         selectedNode = nil
+        nodeName = ""
     }
 
     @IBAction func handleRemoveNodeButton(_ sender: Any) {
@@ -146,6 +149,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
 
     @IBAction func handleLibraryButton(_ sender: Any) {
+        menuControl()
         performSegue(withIdentifier: "toLibrary", sender: self)
     }
 
@@ -185,21 +189,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         let node = SCNNode()
 
-        if !anchor.isKind(of: ARPlaneAnchor.self) {
-            DispatchQueue.main.async {
-                let modelClone = self.nodeModel.clone()
-                modelClone.position = SCNVector3Zero
-
-                // Add model as a child of the node
-                node.addChildNode(modelClone)
-            }
-        }
-
-        return node
     }
  */
 
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        // check if user has selected a scene has a value
+        if(selectedScn == nil) { return }
+
+        // assign nodeModel value of childNode
+        nodeModel = selectedScn.rootNode.childNode(
+            withName: nodeName, recursively: true)
+
         if !anchor.isKind(of: ARPlaneAnchor.self) {
             DispatchQueue.main.async {
                 let modelClone = self.nodeModel.clone()
@@ -207,6 +207,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
                 // Add model as a child of the node
                 node.addChildNode(modelClone)
+
+                // reset name, model and scn values
+                self.nodeName = ""
+                self.nodeModel = nil
+                self.selectedScn = nil
             }
         }
     }
@@ -226,22 +231,3 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
     }
 }
-
-
-
-//func createShip(position: SCNVector3) {
-//    let sphereShape = SCNSphere(radius: 0.05)
-//
-//    // set the color of the box...can use UIImage(named: "") for texture from an image
-//    let material = SCNMaterial()
-//    material.diffuse.contents = UIColor.green
-//
-//    sphereShape.materials = [material]
-//
-//    // create the scene node from the shape
-//    let sphere = SCNNode(geometry: sphereShape)
-//    sphere.position = position
-//
-//    // var shipNode = SCNNode(mdlObject: "art.scnassets/ship.scn")
-//    sceneView.scene.rootNode.addChildNode(sphere)
-//}
