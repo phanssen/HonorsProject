@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SceneKit
 
 class FurnitureCellController: UICollectionViewCell {
-    @IBOutlet weak var furnitureImageView: UIImageView!
     @IBOutlet weak var furnitureLabel: UILabel!
+    @IBOutlet weak var furnitureObject: SCNView!
 }

@@ -138,35 +138,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZHx-9r-Zrc">
-                            <size key="itemSize" width="150" height="160"/>
+                            <size key="itemSize" width="190" height="180"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FurnitureCell" id="Ssd-OJ-ZHM" customClass="FurnitureCellController" customModule="Honors_Project" customModuleProvider="target">
-                                <rect key="frame" x="10" y="10" width="150" height="160"/>
+                                <rect key="frame" x="10" y="10" width="190" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="150" height="160"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="190" height="180"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="close_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="w8E-Uu-OFE">
-                                            <rect key="frame" x="0.0" y="0.0" width="150" height="130"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjB-7t-RIC">
-                                            <rect key="frame" x="0.0" y="130" width="150" height="30"/>
+                                            <rect key="frame" x="0.0" y="145" width="190" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nWS-pI-0Ol">
+                                            <rect key="frame" x="1" y="1" width="188" height="144"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </sceneKitView>
                                     </subviews>
                                 </view>
+                                <size key="customSize" width="190" height="180"/>
                                 <connections>
-                                    <outlet property="furnitureImageView" destination="w8E-Uu-OFE" id="Jy9-QJ-pyG"/>
                                     <outlet property="furnitureLabel" destination="PjB-7t-RIC" id="RQ9-02-Pb1"/>
+                                    <outlet property="furnitureObject" destination="nWS-pI-0Ol" id="Cyi-eD-djS"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -176,7 +177,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Library" leftItemsSupplementBackButton="YES" id="nQz-mT-ri9">
-                        <barButtonItem key="backBarButtonItem" title="Back" image="close_icon.png" id="Dv6-CV-zEU"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Dv6-CV-zEU"/>
                         <barButtonItem key="leftBarButtonItem" title="Close" style="plain" id="WCt-Jh-sVn">
                             <connections>
                                 <action selector="onCloseLibrary:" destination="A6e-re-Fss" id="3u6-dV-TtA"/>
@@ -212,7 +213,6 @@
     </scenes>
     <resources>
         <image name="close_icon" width="480" height="480"/>
-        <image name="close_icon.png" width="480" height="480"/>
         <image name="menu_icon.png" width="480" height="480"/>
     </resources>
 </document>
