@@ -13,11 +13,17 @@ private let reuseIdentifier = "FurnitureCell"
 
 class LibraryCollectionViewController: UICollectionViewController {
 
-    let furniture = ["Elephant", "Cherub"]
-    let furnitureImages: [SCNScene] = [SCNScene(named: "art.scnassets/elephant/elephant.dae")!, SCNScene(named: "art.scnassets/cherub/cherub.dae")!]
+    /**** Collection cell items ****/
+    let furniture = ["Elephant", "Cherub", "Wood-Chair"]
+    let furnitureImages: [SCNScene] = [SCNScene(named: "art.scnassets/elephant/elephant.dae")!, SCNScene(named: "art.scnassets/cherub/cherub.dae")!, SCNScene(named: "art.scnassets/wood-chair/wood-chair.dae")!]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // display button options: delete and place in view
+        let placeButton = UIButton()
+        placeButton.setTitle("Place in view", for: UIControl.State.normal)
+        placeButton.isHidden = true
     }
 
     /*
@@ -34,7 +40,7 @@ class LibraryCollectionViewController: UICollectionViewController {
 
     // return the number of sections
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return furniture.count
+        return 1
     }
 
     // return the number of items in the collection view
@@ -49,7 +55,6 @@ class LibraryCollectionViewController: UICollectionViewController {
         cell.furnitureObject.scene = furnitureImages[indexPath.item]
 //        let tempNode = furnitureImages[indexPath.item].rootNode.childNode(withName: "elephant", recursively: true)!
 //        tempNode.scale = SCNVector3(x: 2.0, y: 2.0, z: 2.0)
-
 //        cell.furnitureObject.scene = tempSCN
 
         cell.layer.borderColor = UIColor.lightGray.cgColor
@@ -59,30 +64,28 @@ class LibraryCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let cell = collectionView.cellForItem(at: indexPath)
-
         if let mainVC = presentingViewController as? ViewController {
             mainVC.nodeName = furniture[indexPath.item].lowercased()
             mainVC.selectedScn = furnitureImages[indexPath.item]
+            mainVC.placeNodeLabel.isHidden = false
         }
-        // show item options
-        dismiss(animated: true, completion: nil)
-//        onCloseLibrary(self)
-//        mainVC.performSegue(withIdentifier: "toLibrary", sender: self)
 
-//        if(cell?.layer.borderColor == UIColor.gray.cgColor) {
-//            cell?.layer.borderColor = UIColor.lightGray.cgColor
-//            cell?.layer.borderWidth = 0.5
-//        } else {
-//            cell?.layer.borderColor = UIColor.gray.cgColor
-//            cell?.layer.borderWidth = 2
-//        }
+        // show item options here
+
+//        placeItemButton.isHidden = !placeItemButton.isHidden
+//        deleteItemButton.isHidden = !deleteItemButton.isHidden
+        dismiss(animated: true, completion: nil)
     }
 
     @IBAction func onCloseLibrary(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 
+
+    // display option buttons for a cell item
+    func showOptions() {
+
+    }
     // MARK: UICollectionViewDelegate
 
     /*

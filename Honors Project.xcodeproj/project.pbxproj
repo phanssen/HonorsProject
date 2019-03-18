@@ -16,6 +16,9 @@
 		CC3F2B4121E567FF00B5315B /* Honors_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3F2B4021E567FF00B5315B /* Honors_ProjectUITests.swift */; };
 		CC706B5F221B49FB004D8C72 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC706B5E221B49FB004D8C72 /* Images.xcassets */; };
 		CC7C122B221B485B00E5FF1B /* SceneKit_Assets.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = CC7C122A221B485B00E5FF1B /* SceneKit_Assets.scnassets */; };
+		CC9AA0D22225729F00E27914 /* FocusSquareSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AA0D12225729F00E27914 /* FocusSquareSegment.swift */; };
+		CC9AA0D4222572E800E27914 /* FocusSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AA0D3222572E800E27914 /* FocusSquare.swift */; };
+		CC9AA0D62225757F00E27914 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AA0D52225757F00E27914 /* Plane.swift */; };
 		CCC6D99922027F730010DD1E /* FurnitureCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC6D99822027F730010DD1E /* FurnitureCellController.swift */; };
 		CCC6D9A1220287B00010DD1E /* LibraryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC6D9A0220287B00010DD1E /* LibraryCollectionViewController.swift */; };
 		CCF0F86F21E65BA0003C8F6A /* ARView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCF0F86E21E65BA0003C8F6A /* ARView.xib */; };
@@ -54,6 +57,9 @@
 		CC3F2B4221E567FF00B5315B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC706B5E221B49FB004D8C72 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CC7C122A221B485B00E5FF1B /* SceneKit_Assets.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; name = SceneKit_Assets.scnassets; path = "Honors Project/SceneKit_Assets.scnassets"; sourceTree = "<group>"; };
+		CC9AA0D12225729F00E27914 /* FocusSquareSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSquareSegment.swift; sourceTree = "<group>"; };
+		CC9AA0D3222572E800E27914 /* FocusSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FocusSquare.swift; path = "../../../Downloads/Placing Objects/ARKitExample/UI Elements/Focus Squares/FocusSquare.swift"; sourceTree = "<group>"; };
+		CC9AA0D52225757F00E27914 /* Plane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		CCC6D99822027F730010DD1E /* FurnitureCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FurnitureCellController.swift; sourceTree = "<group>"; };
 		CCC6D9A0220287B00010DD1E /* LibraryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCollectionViewController.swift; sourceTree = "<group>"; };
 		CCF0F86E21E65BA0003C8F6A /* ARView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARView.xib; sourceTree = "<group>"; };
@@ -108,6 +114,8 @@
 		CC3F2B1D21E567FD00B5315B /* Honors Project */ = {
 			isa = PBXGroup;
 			children = (
+				CC9AA0D52225757F00E27914 /* Plane.swift */,
+				CC9AA0D3222572E800E27914 /* FocusSquare.swift */,
 				CCF0F86D21E65B5B003C8F6A /* views */,
 				CC3F2B1E21E567FD00B5315B /* AppDelegate.swift */,
 				CC3F2B2021E567FD00B5315B /* art.scnassets */,
@@ -117,6 +125,7 @@
 				CC3F2B2921E567FF00B5315B /* LaunchScreen.storyboard */,
 				CC3F2B2C21E567FF00B5315B /* Info.plist */,
 				CCC6D99822027F730010DD1E /* FurnitureCellController.swift */,
+				CC9AA0D12225729F00E27914 /* FocusSquareSegment.swift */,
 				CC706B5E221B49FB004D8C72 /* Images.xcassets */,
 			);
 			path = "Honors Project";
@@ -282,10 +291,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC9AA0D22225729F00E27914 /* FocusSquareSegment.swift in Sources */,
+				CC9AA0D4222572E800E27914 /* FocusSquare.swift in Sources */,
 				CCC6D99922027F730010DD1E /* FurnitureCellController.swift in Sources */,
 				CC3F2B2321E567FD00B5315B /* ViewController.swift in Sources */,
 				CCC6D9A1220287B00010DD1E /* LibraryCollectionViewController.swift in Sources */,
 				CC3F2B1F21E567FD00B5315B /* AppDelegate.swift in Sources */,
+				CC9AA0D62225757F00E27914 /* Plane.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

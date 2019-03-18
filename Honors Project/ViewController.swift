@@ -11,22 +11,26 @@ import SceneKit
 import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
+    /**** Variables ****/
     var menuImage : UIImage = UIImage(named: "art.scnassets/menu_icon.png")!
     var nodeModel: SCNNode!
     var nodeName: String = ""
     var selectedNode: SCNNode!
     var selectedScn: SCNScene! = nil
 
+    /**** IBOutlets ****/
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet var menuOptions: [UIButton]!
     @IBOutlet weak var closeDetailsButton: UIButton!
     @IBOutlet weak var removeNodeButton: UIButton!
-
-
-    @IBAction func menuAction(_ sender: UIButton) {
-        menuControl()
-    }
+    @IBOutlet weak var placeNodeLabel: UILabel!
+    @IBOutlet weak var downButton: UIButton!
+    @IBOutlet weak var upButton: UIButton!
+    @IBOutlet weak var rightButton: UIButton!
+    @IBOutlet weak var leftButton: UIButton!
+    @IBOutlet weak var rotateRightButton: UIButton!
+    @IBOutlet weak var rotateLeftButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +41,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         sceneView.antialiasingMode = .multisampling4X
+
+        setupFocusSquare()
         
         // Create a new scene
         let scene = SCNScene()
@@ -92,7 +98,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             }
         }
 
-        // no object has been touch, trying to add object to scene
+        // no object has been touched, try to add object to scene
 
         // check if a scene is selected
         if(selectedScn == nil) { return }
@@ -118,19 +124,39 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
 
     func showNodeDetails() {
-        // make remove button visible
+        // hide menu button while details are showing
+        menuButton.isHidden = !menuButton.isHidden
+
+        // toggle remove button visibility
         removeNodeButton.isHidden = !removeNodeButton.isHidden
 
-        // make X button visible to close out of show details
+        // toggle X button visibility to close out of show details
         closeDetailsButton.isHidden = !closeDetailsButton.isHidden
+
+        // toggle down, up button visibility
+        downButton.isHidden = !downButton.isHidden
+        upButton.isHidden = !upButton.isHidden
+        rightButton.isHidden = !rightButton.isHidden
+        leftButton.isHidden = !leftButton.isHidden
+
+        // toggle rotation buttons
+        rotateLeftButton.isHidden = !rotateLeftButton.isHidden
+        rotateRightButton.isHidden = !rotateRightButton.isHidden
+    }
+
+    /**** IBActions ****/
+    @IBAction func menuAction(_ sender: UIButton) {
+        menuControl()
     }
 
     @IBAction func handleCloseDetailsButton(_ sender: Any) {
         showNodeDetails()
         selectedNode = nil
         nodeName = ""
+        placeNodeLabel.isHidden = true
     }
 
+    // Remove node object from the scene
     @IBAction func handleRemoveNodeButton(_ sender: Any) {
         // prompt user to confirm they want to clear object
         let alertPrompt = UIAlertController(title: "Remove Object", message: "Are you sure you want to remove this object?", preferredStyle: .alert)
@@ -172,6 +198,40 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         self.present(alertPrompt, animated: true, completion: nil)
     }
 
+
+    @IBAction func handleDownButton(_ sender: Any) {
+        // move current node object down by y increment level
+        selectedNode.position = SCNVector3(x: selectedNode.position.x, y: selectedNode.position.y - 0.01, z: selectedNode.position.z)
+    }
+
+    @IBAction func handleUpButton(_ sender: Any) {
+        // move current node object up by y increment level
+        selectedNode.position = SCNVector3(x: selectedNode.position.x, y: selectedNode.position.y + 0.01, z: selectedNode.position.z)
+    }
+
+    @IBAction func handleRightButton(_ sender: Any) {
+        // move current node object right by x increment level
+        selectedNode.position = SCNVector3(x: selectedNode.position.x + 0.01, y: selectedNode.position.y, z: selectedNode.position.z)
+    }
+
+    @IBAction func handleLeftButton(_ sender: Any) {
+        // move current node object left by x increment level
+        selectedNode.position = SCNVector3(x: selectedNode.position.x - 0.01, y: selectedNode.position.y, z: selectedNode.position.z)
+    }
+
+    // rotate current scnnode object by 10 degrees to the right
+    @IBAction func handleRotateRightButton(_ sender: Any) {
+        let rotateR = SCNAction.rotateBy(x: 0, y: CGFloat(10.0 * (Float.pi/180)), z: 0, duration: 0.1)
+        selectedNode.runAction(rotateR)
+    }
+
+    // rotate current scnnode object by 10 degrees to the left
+    @IBAction func handleRotateLeftButton(_ sender: Any) {
+        let rotateR = SCNAction.rotateBy(x: 0, y: -CGFloat(10.0 * (Float.pi/180)), z: 0, duration: 0.1)
+        selectedNode.runAction(rotateR)
+    }
+
+    /**** Helper functions ****/
     // open and close the menu
     func menuControl() {
         menuOptions.forEach{(option) in
@@ -192,6 +252,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
  */
 
+    // render new furniture object node in the ARView
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         // check if user has selected a scene has a value
         if(selectedScn == nil) { return }
@@ -212,6 +273,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 self.nodeName = ""
                 self.nodeModel = nil
                 self.selectedScn = nil
+                self.placeNodeLabel.isHidden = true
             }
         }
     }
@@ -230,4 +292,50 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
     }
+
+    // MARK: - Focus Square
+
+    var focusSquare: FocusSquare?
+    var screenCenter: CGPoint?
+    let serialQueue = DispatchQueue(label: "com.apple.arkitexample.serialSceneKitQueue")
+//    var virtualObjectManager: VirtualObjectManager!
+
+    func setupFocusSquare() {
+        serialQueue.async {
+            self.focusSquare?.isHidden = true
+            self.focusSquare?.removeFromParentNode()
+            self.focusSquare = FocusSquare()
+            self.sceneView.scene.rootNode.addChildNode(self.focusSquare!)
+        }
+    }
+
+//    func updateFocusSquare() {
+//        guard let screenCenter = screenCenter else { return }
+//
+//        DispatchQueue.main.async {
+//            var objectVisible = false
+//            for object in self.virtualObjectManager.virtualObjects {
+//                if self.sceneView.isNode(object, insideFrustumOf: self.sceneView.pointOfView!) {
+//                    objectVisible = true
+//                    break
+//                }
+//            }
+//
+//            if objectVisible {
+//                self.focusSquare?.hide()
+//            } else {
+//                self.focusSquare?.unhide()
+//            }
+//
+//            let (worldPos, planeAnchor, _) = self.virtualObjectManager.worldPositionFromScreenPosition(screenCenter,
+//                                                                                                       in: self.sceneView,
+//                                                                                                       objectPos: self.focusSquare?.simdPosition)
+//            if let worldPos = worldPos {
+//                self.serialQueue.async {
+//                    self.focusSquare?.update(for: worldPos, planeAnchor: planeAnchor, camera: self.session.currentFrame?.camera)
+//                }
+//                self.textManager.cancelScheduledMessage(forType: .focusSquare)
+//            }
+//        }
+//    }
 }
