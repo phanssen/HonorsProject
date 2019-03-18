@@ -12,4 +12,6 @@ import SceneKit
 class FurnitureCellController: UICollectionViewCell {
     @IBOutlet weak var furnitureLabel: UILabel!
     @IBOutlet weak var furnitureObject: SCNView!
+    @IBOutlet weak var placeButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
 }

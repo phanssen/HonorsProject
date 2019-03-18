@@ -93,32 +93,127 @@
                                     <constraint firstAttribute="width" constant="50" id="MMn-RQ-bpk"/>
                                     <constraint firstAttribute="height" constant="50" id="zLI-nW-bHq"/>
                                 </constraints>
-                                <state key="normal" title="Close" image="close_icon"/>
+                                <state key="normal" title="Close" image="close_icon.png"/>
                                 <connections>
                                     <action selector="handleCloseDetailsButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="gBu-Oq-lnN"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place item in view" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmH-W4-322">
+                                <rect key="frame" x="38.5" y="788" width="337" height="24"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
+                                <color key="textColor" red="0.77571507630000003" green="0.99634984849999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aY-G7-OGg">
+                                <rect key="frame" x="284" y="134" width="80" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="U5j-WL-Fje"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Down"/>
+                                <connections>
+                                    <action selector="handleDownButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="A05-hc-6bi"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEY-bA-a0A">
+                                <rect key="frame" x="284" y="54" width="80" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="EF4-Kk-8wN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Up"/>
+                                <connections>
+                                    <action selector="handleUpButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="yrd-op-jEe"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcH-FX-vom">
+                                <rect key="frame" x="324" y="94" width="80" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="ZIX-fx-c5M"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Right"/>
+                                <connections>
+                                    <action selector="handleRightButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="jpD-Mn-9y6"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ncv-Aw-vWT">
+                                <rect key="frame" x="234" y="94" width="80" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Naj-Ud-EqU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Left"/>
+                                <connections>
+                                    <action selector="handleLeftButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="ofe-K9-z3c"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxF-hJ-p6a">
+                                <rect key="frame" x="10" y="54" width="110" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="KrE-Is-jlo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Rotate Right"/>
+                                <connections>
+                                    <action selector="handleRotateRightButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="a2Z-7v-xlf"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1nF-pe-2tG">
+                                <rect key="frame" x="10" y="95" width="110" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="23B-vh-pDD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Rotate Left"/>
+                                <connections>
+                                    <action selector="handleRotateLeftButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="FgV-A9-7bX"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gEE-AX-vB1" secondAttribute="trailing" constant="50" id="0a3-sn-YZ2"/>
+                            <constraint firstItem="eEY-bA-a0A" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="10" id="1Ch-XZ-heK"/>
+                            <constraint firstItem="bxF-hJ-p6a" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" constant="10" id="5sZ-Wi-BUy"/>
+                            <constraint firstItem="1nF-pe-2tG" firstAttribute="top" secondItem="bxF-hJ-p6a" secondAttribute="bottom" constant="5" id="64K-9N-5CU"/>
                             <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="NbW-X2-jIA" secondAttribute="trailing" constant="50" id="7aW-ha-Xxq"/>
-                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="NbW-X2-jIA" secondAttribute="bottom" constant="50" id="7lN-SY-EkQ"/>
                             <constraint firstItem="vk1-u3-Bgo" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" constant="10" id="BeR-pU-S0e"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="DcH-FX-vom" secondAttribute="trailing" constant="10" id="DPz-s5-n4f"/>
+                            <constraint firstItem="hmH-W4-322" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" constant="38.5" id="ETE-2W-2Ze"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" id="GsS-dJ-CKf"/>
+                            <constraint firstItem="1nF-pe-2tG" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" constant="10" id="LkS-Z6-jbD"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="hmH-W4-322" secondAttribute="bottom" constant="50" id="M4y-O0-Jpb"/>
+                            <constraint firstAttribute="trailing" secondItem="hmH-W4-322" secondAttribute="trailing" constant="38.5" id="Og5-62-rEN"/>
                             <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="gEE-AX-vB1" secondAttribute="bottom" constant="50" id="QIr-eg-D2H"/>
+                            <constraint firstItem="Ncv-Aw-vWT" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="50" id="Rn4-p8-52X"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="eEY-bA-a0A" secondAttribute="trailing" constant="50" id="ToQ-ix-YCY"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="NbW-X2-jIA" secondAttribute="bottom" constant="50" id="Us8-OB-neS"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="bottom" secondItem="fQZ-KI-GVf" secondAttribute="bottom" id="VpT-BR-CcM"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="trailing" secondItem="fQZ-KI-GVf" secondAttribute="trailing" id="XyZ-9z-H8e"/>
                             <constraint firstItem="vk1-u3-Bgo" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" id="Zin-Mv-Au7"/>
+                            <constraint firstItem="DcH-FX-vom" firstAttribute="leading" secondItem="Ncv-Aw-vWT" secondAttribute="trailing" constant="10" id="dCi-tq-cHD"/>
+                            <constraint firstItem="DcH-FX-vom" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="50" id="dtL-lZ-leC"/>
                             <constraint firstItem="gEE-AX-vB1" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" constant="50" id="j9a-4K-Zey"/>
+                            <constraint firstItem="bxF-hJ-p6a" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="10" id="kJ5-dQ-EPH"/>
+                            <constraint firstItem="7aY-G7-OGg" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="90" id="lzQ-7F-E1X"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="7aY-G7-OGg" secondAttribute="trailing" constant="50" id="qY3-Th-pi3"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="top" id="rJc-2c-zQA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
                     </view>
                     <connections>
                         <outlet property="closeDetailsButton" destination="gEE-AX-vB1" id="usQ-5v-alh"/>
+                        <outlet property="downButton" destination="7aY-G7-OGg" id="FPK-GD-6zf"/>
+                        <outlet property="leftButton" destination="Ncv-Aw-vWT" id="Pfa-Ro-jHk"/>
                         <outlet property="menuButton" destination="Wdg-lC-qIg" id="ljg-3i-oV9"/>
+                        <outlet property="placeNodeLabel" destination="hmH-W4-322" id="86D-j2-VYe"/>
                         <outlet property="removeNodeButton" destination="NbW-X2-jIA" id="p0F-rw-dcb"/>
+                        <outlet property="rightButton" destination="DcH-FX-vom" id="nci-Z7-mL9"/>
+                        <outlet property="rotateLeftButton" destination="1nF-pe-2tG" id="rIM-hb-Kzp"/>
+                        <outlet property="rotateRightButton" destination="bxF-hJ-p6a" id="BMS-6f-d3b"/>
                         <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
+                        <outlet property="upButton" destination="eEY-bA-a0A" id="j3L-qR-PhM"/>
                         <outletCollection property="menuOptions" destination="SBN-yy-26D" collectionClass="NSMutableArray" id="J3P-Kt-oYN"/>
                         <outletCollection property="menuOptions" destination="zh1-Zd-HZJ" collectionClass="NSMutableArray" id="vGs-OK-uCH"/>
                         <outletCollection property="menuOptions" destination="EXf-fm-aHv" collectionClass="NSMutableArray" id="vw7-1E-tbg"/>
@@ -162,12 +257,32 @@
                                             <rect key="frame" x="1" y="1" width="188" height="144"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </sceneKitView>
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWr-UU-dt4">
+                                            <rect key="frame" x="10" y="99" width="170" height="48"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                            <state key="normal" title="Delete"/>
+                                        </button>
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MWE-HH-t19">
+                                            <rect key="frame" x="10" y="77" width="170" height="48"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                            <state key="normal" title="Place in View"/>
+                                        </button>
                                     </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottomMargin" secondItem="OWr-UU-dt4" secondAttribute="bottom" constant="25" id="4tr-0H-K6U"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="OWr-UU-dt4" secondAttribute="trailing" constant="2" id="BbA-VT-7fq"/>
+                                    <constraint firstItem="MWE-HH-t19" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ssd-OJ-ZHM" secondAttribute="leadingMargin" constant="2" id="dJo-Be-hVd"/>
+                                    <constraint firstItem="OWr-UU-dt4" firstAttribute="leading" secondItem="Ssd-OJ-ZHM" secondAttribute="leadingMargin" constant="2" id="dlt-k4-ys9"/>
+                                    <constraint firstItem="MWE-HH-t19" firstAttribute="top" secondItem="Ssd-OJ-ZHM" secondAttribute="topMargin" constant="25" id="pQe-YL-XKz"/>
+                                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="MWE-HH-t19" secondAttribute="trailing" constant="2" id="qwj-9l-tm9"/>
+                                </constraints>
                                 <size key="customSize" width="190" height="180"/>
                                 <connections>
+                                    <outlet property="deleteButton" destination="OWr-UU-dt4" id="K9O-2v-04O"/>
                                     <outlet property="furnitureLabel" destination="PjB-7t-RIC" id="RQ9-02-Pb1"/>
                                     <outlet property="furnitureObject" destination="nWS-pI-0Ol" id="Cyi-eD-djS"/>
+                                    <outlet property="placeButton" destination="MWE-HH-t19" id="eH0-R0-8pa"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -190,7 +305,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eOh-Sr-DpY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2679.7101449275365" y="20.758928571428569"/>
+            <point key="canvasLocation" x="2739" y="21"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PSl-dw-K5j">
@@ -212,7 +327,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="close_icon" width="480" height="480"/>
+        <image name="close_icon.png" width="480" height="480"/>
         <image name="menu_icon.png" width="480" height="480"/>
     </resources>
 </document>
